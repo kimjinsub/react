@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>순수 리액트 예제</title>
+    </head>
+    <body>
+        <!-- 타겟 컨테이너 -->
+        <div id="root"></div>
+        
+        <!-- React와 ReactDOM 라이브러리(개발 버전) -->
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <!-- 
+            React : 뷰를 만들기 위한 라이브러리
+            ReactDOM : UI를 실제로 브라우저에 렌더링 할 때 사용하는 라이브러리
+            오류와 경고 메시지를 콘솔에 출력하지 않는 프로덕션 버전은 development 대신 production(.min)으로 바꾸면 됨.
+        -->
+
+        <script>
+            // 순수 리액트와 자바스크립트 코드
+            const items = [
+                "연어 900 그램",
+                "신선한 로즈마리 5 가지",
+                "올리브 오일 2 테이블스푼",
+                "작은 레몬 2 조각",
+                "코셔 소금 1 티스푼",
+                "다진 마늘 4 쪽"
+            ];
+
+            const recipe = 
+            React.createElement(
+                "section",
+                {id: "baked-salmon"},
+                React.createElement("h1", null, "구운 연어"),
+                React.createElement(
+                    "ul", 
+                    {className: "ingredients"},
+                    items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
+                ),
+                React.createElement(
+                    "section",
+                    {className: "instructions"},
+                    React.createElement("h2", null, "조리절차"),
+                    React.createElement("p", null, "오븐을 190도로 예열한다."),
+                    React.createElement("p", null, "알루미늄 포일에 올리브 오일을 가볍게 두른다."),
+                    React.createElement(
+                        "p", 
+                        null, 
+                        "로즈마리, 슬라이스한 레몬, 다진 마늘을 연어 위에 얹는다."
+                    ),
+                    React.createElement("p", null, "완전히 익을 때까지 15-20분간 굽는다."),
+                    React.createElement("p", null, "오븐에서 그릇을 꺼낸다.")
+                )
+            );
+            
+            const secretIngredients = [
+                "무염 버터 1 컵",
+                "크런치 땅콩 버터 1 컵",
+                "흑설탕 1 컵",
+                "백설탕 1 컵",
+                "달걀 2 개",
+                "일반 밀가루 2.5 컵",
+                "베이킹 소다 1 티스푼",
+                "소금 0.5 티스푼"
+            ];
+            
+            function IngredientsList(props, children) {
+                return React.createElement(
+                    "ul",
+                    {className: "ingredients"},
+                    props.items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
+                );
+            }
+
+            // ReactDOM.render([recipe, React.createElement(IngredientsList, null, null)], document.getElementById("root"));
+            ReactDOM.render(
+                [recipe, React.createElement(IngredientsList, {items: secretIngredients}, null)], 
+                document.getElementById("root")
+            );
+        </script>
+    </body>
+</html>
