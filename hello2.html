@@ -65,11 +65,11 @@
                 "소금 0.5 티스푼"
             ];
             
-            function IngredientsList(props, children) {
+            function IngredientsList({items, children}) {
                 return React.createElement(
                     "ul",
                     {className: "ingredients"},
-                    props.items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
+                    items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
                 );
             }
 
