@@ -9,5 +9,5 @@ module.exports = {
     module: {
         rules: [{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}]
     },
-    devtool: 'source-map'
+    devtool: 'source-map' // 소스 맵을 추가하려면 이 옵션을 덧붙여라
 }
