@@ -1,4 +1,5 @@
 node_modules
 package-lock.json
-dist/assets/**
-!dist/assets/bundle.js
+#dist/assets/**
+#!dist/assets/bundle.js
+#!dist/assets/bundle.js.map
